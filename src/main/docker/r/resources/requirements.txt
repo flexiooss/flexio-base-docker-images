@@ -1,0 +1,12 @@
+devtools
+tidyverse
+keras
+caret
+rpart
+rpart.plot
+jsonlite
+httr
+forecast
+xgboost
+optparse
+corrplot
