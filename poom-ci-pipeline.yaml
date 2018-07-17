@@ -13,13 +13,13 @@ stages:
       - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
       - $MVN clean install -Ddocker.resource.docker.url=$DOCKER_API_URL
 
-  - name: deploy
-    timeout: 30
-    exec:
-      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
-      - $MVN deploy -DskipTests
-    onlyWhen:
-      - branch in (master, develop)
+#  - name: deploy
+#    timeout: 30
+#    exec:
+#      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
+#      - $MVN deploy -DskipTests
+#    onlyWhen:
+#      - branch in (master, develop)
 
   - name: build-an-deploy-docker-images
     timeout: 15
