@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+
+  minimal_interpretors:
+    build: .
+    image: ${docker.namespace}/minimal_interpretors:${minimal_interpretors.version}
