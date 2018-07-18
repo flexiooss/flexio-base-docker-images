@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <docker.namespace>flexio</docker.namespace>
+        <docker.namespace>registry.containers.ovh.net/flexio</docker.namespace>
         <r.version>1.0.0</r.version>
         <python3.version>1.0.0</python3.version>
         <minimal_interpretors.version>1.0.0</minimal_interpretors.version>
