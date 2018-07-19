@@ -8,10 +8,12 @@ repos <- c(
 
 )
 
-for (i in 1:length(dependencies)){
-  if(grepl('#',dependencies[i])){next}
-  if(!dependencies[i] %in% installed.packages()){
-    print(sprintf("Installing %s", dependencies[i]))
-    install.packages(dependencies[i], quiet = TRUE, repos=repos)
-  }
+for (dep in dependencies){
+    if(grepl('#', dep)){print(sprintf("Skipping %s", dep));next}
+    if(!dep %in% installed.packages()){
+        print(sprintf("Installing %s", dep))
+        install.packages(dep, quiet = TRUE, repos=repos)
+    } else {
+        print(sprintf("Skipping %s", dep))
+    }
 }
