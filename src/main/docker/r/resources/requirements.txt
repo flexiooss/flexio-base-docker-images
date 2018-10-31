@@ -9,4 +9,5 @@ httr
 forecast
 xgboost
 optparse
+testthat
 corrplot
