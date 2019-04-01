@@ -1,7 +1,7 @@
 devtools
 tidyverse
 keras
-caret
+#caret (not available for R 3.3.3)
 rpart
 rpart.plot
 jsonlite
