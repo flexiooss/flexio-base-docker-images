@@ -1,0 +1,5 @@
+---
+from:
+  - url: git@github.com:Flexio-corp/pipeline-image.git
+    branch: develop
+
