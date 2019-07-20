@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  minimal_interpretors:
+    build: minimal_interpretors
+    image: ${DOCKER_REGISTRY:-localhost:5000}/flexio/minimal_interpretors:${VERSION}
+
+  python3:
+    build: python3
+    image: ${DOCKER_REGISTRY:-localhost:5000}/flexio/python3:${VERSION}
+
+  r:
+    build: r
+    image: ${DOCKER_REGISTRY:-localhost:5000}/flexio/r:${VERSION}
