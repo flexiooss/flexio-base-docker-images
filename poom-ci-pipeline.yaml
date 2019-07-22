@@ -1,5 +1,43 @@
 ---
+
 from:
-  - url: git@github.com:Flexio-corp/pipeline-image.git
+  - url: git@github.com:Flexio-corp/pipeline-common-env.git
     branch: develop
 
+stages:
+  - name: prepare-env
+    exec:
+      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
+
+  - name: build
+    timeout: 180
+    exec:
+      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
+      - cd $SRC && VERSION="$($FLEXIO_FLOW version)" ./build.sh
+    onlyWhen:
+      - branch in (master, develop)
+
+  - name: deploy
+    timeout: 30
+    exec:
+      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
+      - cd $SRC && VERSION="$($FLEXIO_FLOW version)" ./deploy.sh
+    onlyWhen:
+      - branch in (master, develop)
+
+onSuccess:
+  #  - name: metadata
+  #    timeout: 10
+  #    exec:
+  #      - $NOTIFY --data-urlencode "status=2" --data-urlencode "current-stage=$STAGE"
+  - name: notify-flexio
+    exec:
+      - $NOTIFY --data-urlencode "status=0" --data-urlencode "current-stage="
+
+onError:
+  - name: notify-flexio
+    exec:
+      - $NOTIFY --data-urlencode "status=1" --data-urlencode "current-stage="
+
+env:
+  - DOCKER_REGISTRY: harbor.ci.flexio.io
